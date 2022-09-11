@@ -5,4 +5,5 @@ for index = 1:length(altitudeLevels)
         return
     end
 end
+scaleHeightIndex = 19;
 end
