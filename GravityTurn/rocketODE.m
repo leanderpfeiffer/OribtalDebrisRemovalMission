@@ -15,7 +15,7 @@ function du = rocketODE(u, rocket)
     dgamma = -1/v*(g-v^2/(R+h))*cos(gamma);
     dx = R/(R+h)*v*cos(gamma);
     dh = v*sin(gamma);
-    dm = - rocket.T/(rocket.Isp*g0);
+    dm = - rocket.dm;
 
     du = [dv; dgamma; dx; dh; dm];
 

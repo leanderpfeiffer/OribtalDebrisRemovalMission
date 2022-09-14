@@ -14,7 +14,7 @@ function du = rocketODEstart(u, rocket)
     dgamma = 0;
     dx = 0;
     dh = v;
-    dm = - rocket.T/(rocket.Isp*g0);
+    dm = - rocket.dm;
 
     du = [dv; dgamma; dx; dh; dm];
 

@@ -15,7 +15,7 @@ function du = rocketODEend(u, rocket, t, steeringData)
     dgamma = 0;
     dx = R/(R+h)*v*cos(gamma);
     dh = v*sin(gamma);
-    dm = - rocket.T/(rocket.Isp*g0);
+    dm = - rocket.dm;
 
     du = [dv; dgamma; dx; dh; dm];
 
