@@ -8,8 +8,10 @@ function du = rocketODE(u, rocket)
     R = 6371000;
     g0 = getGravitationalAcceleration(0);
     
-    D = 1/2 * rocket.A * getDensity(h)* v^2* 0.35;
+    coefficientOfDrag = getCoefficientOfDrag(v,h);
+    D = 1/2 * rocket.A * getDensity(h)* v^2* coefficientOfDrag;
     g = getGravitationalAcceleration(h);
+
     
     dv = rocket.T/m - D/m -g*sin(gamma);
     dgamma = -1/v*(g-v^2/(R+h))*cos(gamma);
