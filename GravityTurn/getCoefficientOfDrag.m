@@ -7,6 +7,8 @@ function coefficientOfDrag = getCoefficientOfDrag(velocity, height)
         coefficientOfDrag = 0.51;
     elseif 1.25 <= Ma
         coefficientOfDrag = 0.0256*Ma^2+ -0.256*Ma + 0.78;
+    else
+        coefficientOfDrag = 0.2;
     end
 
 end
