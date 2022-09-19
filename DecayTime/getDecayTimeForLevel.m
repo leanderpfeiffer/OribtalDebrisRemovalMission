@@ -2,6 +2,9 @@ function [dt, h] = getDecayTimeForLevel(h0,B)
     load atmosphere.mat scaleHeightLevels altitudeLevels
     
     scaleHeightIndex = getScaleHeightIndex(h0, altitudeLevels);
+    if scaleHeightIndex == 0
+        scaleHeightIndex = 1;
+    end
     scaleHeight = scaleHeightLevels(scaleHeightIndex) * 1000;
 
     h = altitudeLevels(scaleHeightIndex) * 1000;
