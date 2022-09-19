@@ -1,0 +1,24 @@
+sat23561 = struct;
+sat23561.name = 'ARIANE 40 + R/B';
+sat23561.semiMajorAxis = (775 + 758)/2*1000;
+sat23561.eccentricity = (775-758)/(775+758);
+sat23561.inclination = 98.49;
+sat23561.RAAN = 13.2;
+sat23561.argOfPeri = 1.49;
+
+sat22830 = struct;
+sat22830.name = 'ARIANE 40 R/B';
+sat22830.semiMajorAxis = (799 + 777)/2*1000;
+sat22830.eccentricity = (799-777)/(799+777);
+sat22830.inclination = 98.62;
+sat22830.RAAN = 13.3;
+sat22830.argOfPeri = 0.14;
+
+
+sat20443 = struct;
+sat20443.name = 'ARIANE 40 R/B';
+sat20443.semiMajorAxis = (743 + 777)/2*1000;
+sat20443.eccentricity = (799-777)/(799+777);
+sat20443.inclination = 98.62;
+sat20443.RAAN = 13.3;
+sat20443.argOfPeri = 0.14;
