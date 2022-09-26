@@ -1,4 +1,4 @@
-function [deltaVCatch, deltaVSlowDown, massOfFuel, massAtStart, durations] = computeDeltaV(sats, startOrbit)
+function [] = computeDeltaV(sats, st)
 
 mu              = 398600e+09;           % [m^3/s^2]
 Re              = 6371e+03;             % [m]
@@ -11,7 +11,7 @@ finalAltitude   = 400e+03;              % [m]
 finalRadius     = Re + finalAltitude;   % [m]
 finalV          = sqrt(mu/finalRadius); % [m/s]
 
-
+load satellites.mat sats startOrbit
 
 satCount    = length(sats);
 
@@ -21,6 +21,11 @@ massOfFuel      = zeros(1,satCount);
 massAtStart     = zeros(1,satCount);
 durations       = zeros(1,satCount);
 
+for i = 1:length(sats)
+    
+    deltaVCatch(i) = dV;
+
+end
 
 for i = 1:length(sats)
     deltaVCatch(i)      = getManeuverDV(startOrbit,sats(i));
@@ -32,7 +37,11 @@ for i = 1:length(sats)
     massAtStart(i) = massBeforeSlowDown / massRatioCatch;
     massOfFuel(i)  = massAtStart(i) - structureMass;
 
-    durations(i) = deltaVSlowDown(i) * (massBeforeSlowDown)/( T * 3600 * 24); % [days] 
+    durations(i) = deltaVs(i) * (massBeforeSlowDown)/( T * 3600 * 24); % [days] 
 
 end
-end
+deltaVCatch     
+deltaVSlowDown  
+massOfFuel      
+massAtStart     
+durations       
