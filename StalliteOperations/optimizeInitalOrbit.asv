@@ -1,15 +1,25 @@
 load satellites.mat sats startOrbit
 
 RAANs = 0:1:50;
-maxWeight = 100000;
-optRAAN = 0;
+% semiMajorAxes = (6571:20:7300)*1e+03;
+e = 0; % 0:0.01:0.5;
+inclination = 98; %95:0.2:100;
+argOfPeri = 0; %0:0.5:20;
 
-for i = 1:length(RAANs)
+len = length(RA);
+
+maxWeight = zeros(1,length(len));
+
+for i = 1:length(len)
     startOrbit.RAAN = RAANs(i);
+    %startOrbit.semiMajorAxis = semiMajorAxes(i);
+    %startOrbit.eccentricity = e(i);
+    %startOrbit.inclination = inclination(i);
+    %startOrbit.argOfPeri = argOfPeri(i);
+    
     [deltaVCatch, deltaVSlowDown, massOfFuel, massAtStart, durations] = computeDeltaV(sats, startOrbit);
-    maxWeightCheck = max(massAtStart);
-    if maxWeight < maxWeightCheck
-        maxWeight = maxWeightCheck;
-        optRAAN = RAANs(i)
-        
+    maxWeight(i) = max(massAtStart);
 end
+maxWeight
+bestWeight = min(maxWeight)
+value = find(maxWeight == bestWeight)
