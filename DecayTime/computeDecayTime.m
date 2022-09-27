@@ -1,5 +1,6 @@
-B = 0.02; %getBallisticCoefficient(0.6, 0.1, 1.33);
-
+%B = 0.155; %getBallisticCoefficient(0.6, 0.1, 1.33);
+B = 0.665
+%B = 0.301
 tGoal = 25; % [years]
 
 hA = 650000;
@@ -22,13 +23,4 @@ hA
 tNew
 
 
-
-function t = getDecayTime(B,h)
-    t = 0;
-    while h > 0
-        [dt, hNew] =  getDecayTimeForLevel(h,B);
-        t = t + dt/(3600*24*365); % in years
-        h = hNew - 1; 
-    end
-end
 
