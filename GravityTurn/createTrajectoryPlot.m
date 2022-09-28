@@ -13,3 +13,4 @@ fill(rEarth.*cosd(Evals),rEarth.*sind(Evals),[0.75 1.00 0.75]);
 hold on
 axis square
 plot(xCoord,yCoord)
+hold off 

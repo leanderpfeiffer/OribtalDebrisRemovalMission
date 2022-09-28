@@ -1,0 +1,95 @@
+function [v,z,a] = doGravityTurn(payload,tiltingTime,startingAngle)
+
+odeset('AbsTol',1e-6, 'RelTol',1e-6 );
+
+% goal 800km +-100km with v = 7.4555 km / s +- 0.05 m/s
+
+stage2      = struct;
+stage2.t    = 397;          % [s]    burn time
+stage2.mp   = 100e+03;      % [kg]
+stage2.ms   = 4e+03;        % [kg]
+stage2.A    = 10.75;        % [m^2]  front area
+stage2.Veff = 3500;         % [m/s]
+stage2.m0   = stage2.ms + stage2.mp + payload;        %[kg]   starting mass
+stage2.mf   = stage2.ms + payload;                    %[kg]   final mass
+
+stage2.dm   = stage2.mp / stage2.t;
+stage2.T    = stage2.Veff * stage2.dm;
+
+
+
+stage1      = struct;
+stage1.t    = 162;          % [s]    burn time
+stage1.mp   = 370e+03;      % [kg]
+stage1.ms   = 52e+03;      % [kg]
+stage1.A    = 10.75;        % [m^2]  front area
+stage1.Veff = 3000;         % [m/s]
+stage1.m0   = stage1.ms + stage1.mp + stage2.m0; %[kg]   starting mass
+stage1.mf   = stage1.ms + stage2.m0;            %[kg]   final mass
+
+stage1.dm   = stage1.mp/stage1.t;
+stage1.T    = stage1.Veff * stage1.dm;
+
+% First two seconds (streight up):
+u0      = [0; pi/2; 0; 0; stage1.m0];
+tSpan   = [0, tiltingTime];
+
+[t1, uOut] = ode45(@(t,u) rocketODEfixed(u,stage1, pi/2),tSpan,u0);
+
+v1      = uOut(:,1);  
+gamma1  = uOut(:,2); 
+x1      = uOut(:,3); 
+h1      = uOut(:,4); 
+m1      = uOut(:,5); 
+
+if h1 < 0
+    v = NaN;
+    z = NaN;
+    a = NaN;
+    return
+end
+% Now lets add a tiny change in Angle!
+gammaStart = pi/2 - pi*startingAngle/180;
+
+u1      = [v1(end); gammaStart; x1(end); h1(end); m1(end)];
+tSpan   = [t1(end), stage1.t];
+
+[t2, uOut] = ode45(@(t,u) rocketODE(u,stage1),tSpan,u1);
+
+v2      = uOut(:,1);  % should be 1.515km/s
+gamma2  = uOut(:,2); 
+x2      = uOut(:,3); 
+h2      = uOut(:,4); 
+m2      = uOut(:,5); 
+if h2 < 0
+    v = NaN;
+    z = NaN;
+    a = NaN;
+    return
+end
+
+% And now the second! This time with the steering law included
+% For this, lets first accumulate the relevatn steering data!
+steeringData            = struct;
+steeringData.gamma0     = gamma2(end);
+steeringData.tStart     = t2(end);
+steeringData.tEnd       = t2(end) + stage2.t;
+
+% And now run it!
+u2      = [v2(end); gamma2(end); x2(end); h2(end); stage2.m0];
+tSpan   = [t2(end), stage2.t + t2(end)];
+
+
+[t3, uOut] = ode45(@(t,u) rocketODEend(u,stage2,t, steeringData),tSpan,u2);
+
+v3      = uOut(:,1);  % Should be around 8 km/s
+gamma3  = uOut(:,2); 
+x3      = uOut(:,3); 
+h3      = uOut(:,4); 
+m3      = uOut(:,5); 
+t3(end)
+
+v = v3(end);
+z = h3(end);
+a = 1/(2/(z+6371e+03 - v^2/398600e+03));
+end
