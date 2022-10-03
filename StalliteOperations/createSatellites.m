@@ -99,12 +99,12 @@ startOrbit.name = 'Starting Orbit';
 startOrbit.mass = 350;
 startOrbit.apogee = (6371 + 860)*1000;
 startOrbit.perigee = (6371 + 860)*1000;
-startOrbit.semiMajorAxis = 7171000;
+startOrbit.semiMajorAxis = 7191000;
 startOrbit.eccentricity = 0;
-startOrbit.inclination = 98.6;
+startOrbit.inclination = 98.4;
 startOrbit.RAAN = 25;
 startOrbit.argOfPeri = 0.2;
 startOrbit.trueAnomaly = 0;
 
-sats = [sat25942 sat20443 sat22830 sat23561 sat21610 sat25732 sat27432];
+sats = [sat25942 sat20443 sat22830 sat23561 sat21610 sat25732 sat27432 sat23828];
 save satellites.mat sats startOrbit

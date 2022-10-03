@@ -1,4 +1,4 @@
-function [deltaVCatch, deltaVSlowDown, massOfFuel, massAtStart, durationSlowDown, durationCatch] = computeDeltaV(sats, startOrbit)
+function [deltaVCatch, deltaVSlowDown, massOfFuel, massAtStart, durationSlowDown, durationCatch, dwRel] = computeDeltaV(sats, startOrbit)
 
 mu              = 398600e+09;           % [m^3/s^2]
 Re              = 6371e+03;             % [m]
@@ -21,7 +21,7 @@ massOfFuel          = zeros(1,satCount);
 massAtStart         = zeros(1,satCount);
 durationSlowDown    = zeros(1,satCount);
 durationCatch       = zeros(1,satCount);
-
+dwRel               = zeros(1,satCount);
 
 
 for i = 1:length(sats)
@@ -32,7 +32,7 @@ for i = 1:length(sats)
     
     wSat        = sqrt(mu/startOrbit.semiMajorAxis^3);
     wDebris     = sqrt(mu/sats(i).semiMajorAxis^3);
-    dw = abs(wSat - wDebris) * (24*180*3600)/pi % [deg/day]
+    dwRel(i) = abs(wSat - wDebris) * (24*180*3600)/pi; % [deg/day]
 
     massBeforeSlowDown = (structureMass + sats(i).mass) / massRatioSlowDown - sats(i).mass;
     massAtStart(i) = massBeforeSlowDown / massRatioCatch;
