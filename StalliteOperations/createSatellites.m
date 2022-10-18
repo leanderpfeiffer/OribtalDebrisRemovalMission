@@ -1,5 +1,5 @@
 sat23561 = struct;
-sat23561.name = 'ARIANE 40 + R/B';
+sat23561.name = 'ARIANE_40_+_R/B';
 sat23561.mass = 1764;
 sat23561.apogee = (6371 + 775)*1000;
 sat23561.perigee = (6371 + 758)*1000;
@@ -11,7 +11,7 @@ sat23561.argOfPeri = 1.49;
 sat23561.trueAnomaly = 0;
 
 sat22830 = struct;
-sat22830.name = 'ARIANE 40 R/B';
+sat22830.name = 'ARIANE_40_R/B';
 sat22830.mass = 1764;
 sat22830.apogee = (6371 + 799)*1000;
 sat22830.perigee = (6371 + 777)*1000;
@@ -23,7 +23,7 @@ sat22830.argOfPeri = 0.14;
 sat22830.trueAnomaly = 0;
 
 sat20443 = struct;
-sat20443.name = 'ARIANE 40 R/B';
+sat20443.name = 'ARIANE_40_R/B';
 sat20443.mass = 1764;
 sat20443.apogee = (6371 + 777)*1000;
 sat20443.perigee = (6371 + 743)*1000;
@@ -35,7 +35,7 @@ sat20443.argOfPeri = 9.02;
 sat20443.trueAnomaly = 0;
 
 sat25942 = struct;
-sat25942.name = 'CZ-4B R/B';
+sat25942.name = 'CZ-4B_R/B';
 sat25942.mass = 1000;
 sat25942.apogee = (6371 + 844)*1000;
 sat25942.perigee = (6371 + 690)*1000;
@@ -47,7 +47,7 @@ sat25942.argOfPeri = 6.17;
 sat25942.trueAnomaly = 0;
 
 sat21610 = struct;
-sat21610.name = 'ARIANE 40 R/B';
+sat21610.name = 'ARIANE_40_R/B';
 sat21610.mass = 1764;
 sat21610.apogee = (6371 + 768)*1000;
 sat21610.perigee = (6371 + 753)*1000;
@@ -59,7 +59,7 @@ sat21610.argOfPeri = 6.06;
 sat21610.trueAnomaly = 0;
 
 sat25732 = struct;
-sat25732.name = 'CZ-4B R/B';
+sat25732.name = 'CZ-4B_R/B';
 sat25732.mass = 1000;
 sat25732.apogee = (6371 + 869)*1000;
 sat25732.perigee = (6371 + 790)*1000;
@@ -71,7 +71,7 @@ sat25732.argOfPeri = 0.93;
 sat25732.trueAnomaly = 0;
 
 sat27432 = struct;
-sat27432.name = 'CZ-4B R/B';
+sat27432.name = 'CZ-4B_R/B';
 sat27432.mass = 1000;
 sat27432.apogee = (6371 + 895)*1000;
 sat27432.perigee = (6371 + 811)*1000;
@@ -83,7 +83,7 @@ sat27432.argOfPeri = 5.27;
 sat27432.trueAnomaly = 0;
 
 sat23828 = struct;
-sat23828.name = 'PSLV R/B';
+sat23828.name = 'PSLV_R/B';
 sat23828.mass = 912;
 sat23828.apogee = (6371 + 839)*1000;
 sat23828.perigee = (6371 + 789)*1000;
@@ -95,7 +95,7 @@ sat23828.argOfPeri = 2.94;
 sat23828.trueAnomaly = 0;
 
 startOrbit = struct;
-startOrbit.name = 'Starting Orbit';
+startOrbit.name = 'Starting_Orbit';
 startOrbit.mass = 350;
 startOrbit.apogee = (6371 + 860)*1000;
 startOrbit.perigee = (6371 + 860)*1000;

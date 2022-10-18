@@ -7,7 +7,7 @@ g0              = 9.81;                 % [m/s^2]
 Isp             = 1390;                 % [s]
 T               = 26e-3;                % [N]
 structureMass   = 100;                  % [kg]
-finalAltitude   = 400e+03;              % [m]
+finalAltitude   = 275e+03;              % [m]
 finalRadius     = Re + finalAltitude;   % [m]
 finalV          = sqrt(mu/finalRadius); % [m/s]
 

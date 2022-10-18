@@ -1,7 +1,7 @@
-%B = 0.155; %getBallisticCoefficient(0.6, 0.1, 1.33);
-B = 0.665
-%B = 0.301
-tGoal = 25; % [years]
+%B = getBallisticCoefficient(2, 100, 1700);
+%B = 0.1
+B = 0.155;
+tGoal = 24; % [years]
 
 hA = 650000;
 hB = 50000;
@@ -18,7 +18,7 @@ while tNew > tGoal + tol || tNew < tGoal - tol
        hB = hNew;
    end
 end
-
+plotDecayTime(400000,B)
 hA
 tNew
 
